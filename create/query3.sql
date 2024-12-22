@@ -1,17 +1,13 @@
 -- Purpose: Query to get the capacity of each grid in a facility.
 select 
-    Private_Parking_Spot.x_coordinate as x
-    Private_Parking_Spot.y_coordinate as y
-    Private_Parking_Spot.spot_vehicle_type as Vehicle
-    Private_Parking_Spot.vacancy_status as Vacancy
-    Grid.facility_location as Facility
-    count(*) as Capacity_per_Grid
+    grid.facility_location as Facility,
+    grid.grid_id as Grid_id,
+    count(*) as Capacity_Per_Grid
 from 
-    Private_Parking_Spot join Grid 
+    private_parking_spot join grid 
 on 
-    Private_Parking_Spot.grid_id = Grid.grid_id 
+    private_parking_spot.grid_id = grid.grid_id 
 where 
-    Grid.facility_location = "Delfon 148"
+    grid.facility_location = "Thermi 42"
 group by 
-    grid_id;
-
+    grid.grid_id;
